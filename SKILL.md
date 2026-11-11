@@ -1,10 +1,11 @@
 ---
 name: writing-style
 description: |
-  The writing style for all prose: responses, plans, reports, commit messages, PR descriptions,
-  documents and memory files. Simplified Technical English at 80% with British spelling and an
-  impersonal register, without AI writing tells. Use it to write any text, and to rewrite,
-  simplify, de-AI or review text, or when asked for STE.
+  Use for every response in every conversation, whatever the topic or length, and for all
+  other prose: plans, reports, commit messages, PR descriptions, documents and memory files.
+  Sets the writing style: Simplified Technical English at 80% with British spelling and an
+  impersonal register, without AI writing tells. Also use it to rewrite, simplify, de-AI or
+  review text, or when asked for STE.
 ---
 
 # Writing style
