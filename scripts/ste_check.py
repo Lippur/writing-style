@@ -1,9 +1,7 @@
 #!/usr/bin/env python3
-"""ste_check: a small heuristic linter for AI tells and STE-style (ASD-STE100-inspired) English.
+"""ste_check: a heuristic linter for AI tells and STE-style English.
 
-Part of the ste80-humanizer skill. It finds places to look at.
-It does not prove compliance with ASD-STE100 and it is not an AI detector.
-No dependencies. Python 3.8+.
+Each finding is a place to look at. No dependencies. Python 3.8+.
 
 Usage:
     python ste_check.py FILE [FILE ...]
@@ -52,6 +50,7 @@ SWAPS = {
     "cutting-edge": "(fact or delete)", "world-class": "(fact or delete)", "best-in-class": "(fact or delete)",
     "renowned": "(fact or delete)", "stunning": "(delete)", "breathtaking": "(delete)",
     "serves as": "is", "stands as": "is", "boasts": "has",
+    "genuinely": "(delete)",
 }
 
 STRICT_ONLY_SWAPS = {
@@ -78,7 +77,7 @@ TELLS = [
     (r"\bin this (?:guide|article|section|post),? (?:we|i)(?:'ll| will)\b", "meta", "writing about the text: give the content"),
     (r"\b(?:could|may|might) (?:potentially|possibly|arguably)\b", "stacked-hedge", "stacked hedge: keep one hedge"),
     (r"\b(?:experts|studies|many people|observers) (?:say|agree|show|believe|suggest)\b", "vague-authority", "vague authority: name the source or delete"),
-    (r",\s+(?:highlighting|underscoring|emphasizing|ensuring|reflecting|showcasing|fostering|cultivating|contributing to)\b", "ing-rider", "shallow '-ing' rider: delete or make it a sentence"),
+    (r",\s+(?:highlighting|underscoring|emphasi[sz]ing|ensuring|reflecting|showcasing|fostering|cultivating|contributing to)\b", "ing-rider", "shallow '-ing' rider: delete or make it a sentence"),
     (r"\b(?:plays|play|played) a (?:pivotal|crucial|key|vital) role\b|\bmarks? a (?:significant|major) milestone\b|\bthe future looks bright\b", "inflation", "inflated significance: say what happened"),
     (r"\b(?:is|are|was|were) associated with\b|\b(?:in connection with|linked to|tied to)\b", "vague-association", "vague connection: name the relation (founded, caused, part of)"),
     (r"\b(?:is|are|was|were|be)(?:\s+\w+ly)?\s+(?:high-quality|well-known|well-documented|long-term|real-time|well-tested|client-facing)\b", "hyphen-pair", "drop the hyphen after the noun ('is well documented')"),
@@ -226,8 +225,8 @@ def check(text: str, strict: bool) -> list[Finding]:
         low = line.lower()
         if ";" in line:
             f.append(Finding(no, "semicolon", "semicolon: write two sentences or a list", line.strip()[:100]))
-        if "—" in line or " -- " in line:
-            f.append(Finding(no, "dash", "em dash as sentence glue: use a period or colon", line.strip()[:100]))
+        if "—" in line or "–" in line or " -- " in line:
+            f.append(Finding(no, "dash", "dash: use a full stop, comma, colon or parentheses", line.strip()[:100]))
         for m in PASSIVE_RE.finditer(line):
             if m.group(1).lower() in NOT_PARTICIPLE:
                 continue
