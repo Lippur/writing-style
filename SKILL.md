@@ -1,11 +1,11 @@
 ---
 name: writing-style
 description: |
-  Use for every response in every conversation, whatever the topic or length, and for all
-  other prose: plans, reports, commit messages, PR descriptions, documents and memory files.
-  Sets the writing style: Simplified Technical English at 80% with British spelling and an
-  impersonal register, without AI writing tells. Also use it to rewrite, simplify, de-AI or
-  review text, or when asked for STE.
+  Use for prose that people read outside the chat: documentation, application text (UI
+  strings, messages, help), commit messages, PR descriptions and review comments. Do not use
+  for chat responses. Sets the writing style: Simplified Technical English at 80% with British
+  spelling and an impersonal register, without AI writing tells. Also use it to rewrite,
+  simplify, de-AI or review text, or when asked for STE.
 ---
 
 # Writing style
@@ -35,7 +35,7 @@ These rules apply in every mode and override the rest of this skill.
 
 ## Output
 
-- New text (a response, plan, report or document): start with the answer or the decision. No preamble and no closing summary. Do not list § or S numbers.
+- New text (a document, a help page or UI text): start with the answer or the decision. No preamble and no closing summary. Do not list § or S numbers.
 - Embedded text (a commit message, a PR description): return only the final text.
 
 Before you rewrite or review existing text, read `references/rewriting.md`. It has Light mode, the procedure, the output for rewrites and reviews, the text to leave alone and the checker.

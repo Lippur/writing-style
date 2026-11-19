@@ -1,6 +1,6 @@
 # Guide for agents
 
-This repository is one agent skill. `SKILL.md` loads in every session, so each word in it costs tokens. Follow these rules when you change it.
+This repository is one agent skill. `SKILL.md` loads for each task that writes documentation, application text, commit messages or PR descriptions, so each word in it costs tokens. Follow these rules when you change it.
 
 - Write every file in the style that the skill sets.
 - Keep `SKILL.md` to compact tables and rules. Put long entries and examples in `references/`.
