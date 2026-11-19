@@ -1,14 +1,27 @@
 ---
 name: writing-style
 description: |
-  Use for prose that people read outside the chat: documentation, application text (UI
-  strings, messages, help), commit messages, PR descriptions and review comments. Do not use
-  for chat responses. Sets the writing style: Simplified Technical English at 80% with British
-  spelling and an impersonal register, without AI writing tells. Also use it to rewrite,
-  simplify, de-AI or review text, or when asked for STE.
+  Use for text that people read outside the chat: documentation, plans, reports and other
+  documents, application text (UI strings, messages, help), commit messages, PR descriptions,
+  issue text and review comments. Do not use for chat: replies in a conversation and messages
+  between agents follow the caveman skill, with British spelling. Sets the writing style:
+  Simplified Technical English at 80% with British spelling and an impersonal register,
+  without AI writing tells. Also use it to rewrite, simplify, de-AI or review text, or when
+  asked for STE.
 ---
 
 # Writing style
+
+## Scope
+
+| Text | Style |
+|---|---|
+| Documentation, plans, reports, decision records, memory files and other documents | This skill |
+| Application text: UI strings, messages, emails, help | This skill, under the product's own copy rules where they differ |
+| Commit messages, PR descriptions, issue text, review comments | This skill |
+| Chat: replies to a person, messages between agents, progress notes | The caveman skill, with British spelling. Not this skill |
+
+A document written during a chat follows this skill, and the chat message around it follows caveman. Quoted text keeps its own style.
 
 Write so that the reader gets the point on the first pass. Two passes set the style:
 
